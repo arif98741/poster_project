@@ -1,0 +1,1 @@
+Click here <a href="{{ url('click/'.$id) }}">Click here</a>
