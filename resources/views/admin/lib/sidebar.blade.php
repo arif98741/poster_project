@@ -40,6 +40,34 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-list"></i>
                         <p>
+                            Poster Category
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.poster_category.create') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add Poster Category</p>
+                            </a>
+
+
+                            <a href="{{ route('admin.poster_category.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Poster Category list</p>
+                            </a>
+
+
+                        </li>
+
+                    </ul>
+                </li>
+
+
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-list"></i>
+                        <p>
                             Blog Category
                             <i class="fas fa-angle-left right"></i>
                         </p>
@@ -54,6 +82,8 @@
 
                     </ul>
                 </li>
+
+
 
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">

@@ -85,6 +85,8 @@
 </div>
 <!-- CONTACT -->
 
+
+
 <!-- MAP -->
 @push('extra-css')
 <link rel="stylesheet" href="{{asset('asset/front/owl-carousel/owl.carousel.css')}}">
