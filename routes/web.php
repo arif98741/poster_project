@@ -1,6 +1,7 @@
 <?php
 
 Route::get('/', 'Web\HomeController@index');
+Route::get('/contact', 'Web\HomeController@contact');
 Route::get('/search', 'Web\HomeController@search');
 Route::get('/admin', function () {
     return redirect('admin/login');

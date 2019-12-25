@@ -1,107 +1,125 @@
-@extends('layout.web.web') @section('title','Homepage') @section('content')
-<main>
-    @include('layout.web.lib.hero')
-    <!-- /hero_single -->
+@extends('layout.web.web') @section('title','Homepage') @section('content') @include('layout.web.lib.carousal')
 
-    <div class="container margin_60_35">
-        <div class="main_title_3">
-            <h2>Top Categories</h2>
-            <p></p>
-            <a href="{{ url('company/category-companies-listing/company-name')}}">View all</a>
-        </div>
-        <div class="row justify-content-center">
-            @foreach($top_categories as $top_category)
-            <div class="col-lg-4 col-sm-6">
-                <a href="grid-listings-filterstop.html" class="grid_item">
-                    <figure>
-                        <img src="{{url('storage/uploads/category/'.$top_category->image)}}" alt="">
-                        <div class="info">
-                            <small>{{ $top_category->companies->count() }} Results</small>
-                            <em><i class="icon-comment"></i>
-                                0
-                                Reviews</em>
-                            <h3>{{ $top_category->category_name }}</h3>
-                        </div>
-                    </figure>
-                </a>
-            </div>
+<!-- CAROUSEL -->
 
-            @endforeach
-
-        </div>
-        <!-- /row -->
+<!-- FIRST BLOCK -->
+<div id="first-block">
+    <div class="line">
+        <h1>Amazing Responsive Business Template</h1>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+        <div class="s-12 m-4 l-2 center"><a class="white-btn" href="#contact">Contact Us</a></div>
     </div>
-    <!-- /container -->
-
-    <div class="bg_color_1">
-        <div class="container margin_60">
-            <div class="main_title_3">
-                <h2>Latest Reviews</h2>
-                <p></p>
-                <a href="{{ url('reviewer/row-listing') }}">View all</a>
+</div>
+<!-- FEATURES -->
+<div id="features">
+    <div class="line">
+        <div class="margin">
+            <div class="s-12 m-6 l-3 margin-bottom">
+                <i class="icon-tablet icon3x"></i>
+                <h2>Fully responsive</h2>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
             </div>
+            <div class="s-12 m-6 l-3 margin-bottom">
+                <i class="icon-isight icon3x"></i>
+                <h2>Clean design</h2>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat adipiscing.</p>
+            </div>
+            <div class="s-12 m-6 l-3 margin-bottom">
+                <i class="icon-star icon3x"></i>
+                <h2>Valid code</h2>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna erat volutpat.</p>
+            </div>
+            <div class="s-12 m-6 l-3 margin-bottom">
+                <i class="icon-heart icon3x"></i>
+                <h2>Totally free</h2>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat nonummy.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ABOUT US -->
+@include('layout.web.lib.home.about-us') @include('layout.web.lib.home.our-work')
+<!-- OUR WORK -->
 
-            <div id="reccomended" class="owl-carousel owl-theme">
-
-                @foreach($reviews_data as $review_data)
-                <div class="item">
-                    <div class="review_listing">
-                        <div class="clearfix">
-                            <figure><img src="{{url('storage/uploads/reviewer/'.$review_data->reviewer->image)}}" alt=""></figure>
-                            <span class="rating">
-
-                                @for($i=1; $i<=$review_data->rating; $i++)
-                                    <i class="icon_star"></i>
-                                    @endfor
-
-                                    @if(is_numeric($review_data->rating))
-
-                                    @for($j=1; $j<=5 - $review_data->rating; $j++)
-                                        <i class="icon_star empty"></i>
-                                        @endfor
-                                        @else
-                                        @for($j=1; $j<=5 - 0; $j++) <i class="icon_star empty"></i>
-                                            @endfor
-                                            @endif
-
-
-
-                                            <em>{{ $review_data->rating }}.00/5.00</em></span>
-                            <small>Shop</small>
-                        </div>
-                        <h3><strong>{{ $review_data->reviewer->fullname }}</strong> reviewed <a href="reviews-page.html">{{ $review_data->company->company_name }}</a></h3>
-                        <h4>"{{ $review_data->title }}"</h4>
-                        <p>{{ $review_data->review_text }}</p>
-                        <ul class="clearfix">
-                            <li><small>Published: {{ date('d.m.Y',strtotime($review_data->created_at)) }}</small></li>
-                            <li><a href="{{ url('company/profile/'.$review_data->company->id.'/'.strtolower(str_replace(' ','-',$review_data->company->company_name))) }}#position{{$review_data->id}}" class="btn_1 small">Read review</a></li>
-                        </ul>
+<!-- SERVICES -->
+@include('layout.web.lib.home.services')
+<!-- LATEST NEWS -->
+<div id="latest-news">
+    <div class="line">
+        <h2 class="section-title">Latest News</h2>
+        <div class="margin">
+            <div class="s-12 m-6 l-6">
+                <div class="s-12 l-2">
+                    <div class="news-date">
+                        <p class="day">28</p>
+                        <p class="month">AUGUST</p>
+                        <p class="year">2015</p>
                     </div>
                 </div>
-
-                @endforeach
-
-
-            </div>
-            <!-- /carousel -->
-        </div>
-        <!-- /container -->
-    </div>
-    <!-- /bg_color_1 -->
-
-    <div class="call_section_3">
-        <div class="wrapper">
-            <div class="container clearfix">
-                <div class="col-lg-5 col-md-7 float-right">
-                    <h3>Let's Help You</h3>
-                    <p>ReviewStore is a review platform open to everyone. Share your experiences to help others make better choices, and help companies up their game. Our mission is to bring people and companies together to create experiences for everyone.</p>
-                    <!-- <p><a class="btn_1 add_top_10 wow bounceIn" href="pricing.html" data-wow-delay="0.5s">Join ReviewStore Now!</a></p> -->
+                <div class="s-12 l-10">
+                    <div class="news-text">
+                        <h4>First latest News</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam.
+                        </p>
+                    </div>
                 </div>
             </div>
-            <!-- /container -->
+            <div class="s-12 m-6 l-6">
+                <div class="s-12 l-2">
+                    <div class="news-date">
+                        <p class="day">12</p>
+                        <p class="month">JULY</p>
+                        <p class="year">2015</p>
+                    </div>
+                </div>
+                <div class="s-12 l-10">
+                    <div class="news-text">
+                        <h4>Second latest News</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <!-- /call_section -->
+</div>
+<!-- CONTACT -->
 
-</main>
-@endsection
+<!-- MAP -->
+@push('extra-css')
+<link rel="stylesheet" href="{{asset('asset/front/owl-carousel/owl.carousel.css')}}">
+<link rel="stylesheet" href="{{asset('asset/front/owl-carousel/owl.theme.css')}}"> @endpush @push('extra-js')
+<script type="text/javascript" src="{{asset('asset/front/owl-carousel/owl.carousel.js')}}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        var theme_slider = $("#owl-demo");
+        var owl = $('#owl-demo');
+        owl.owlCarousel({
+            nav: false,
+            dots: true,
+            items: 1,
+            loop: true,
+            autoplay: true,
+            autoplayTimeout: 6000
+        });
+        var owl = $('#owl-demo2');
+        owl.owlCarousel({
+            nav: true,
+            dots: false,
+            items: 1,
+            loop: true,
+            navText: ["&#xf007", "&#xf006"],
+            autoplay: true,
+            autoplayTimeout: 4000
+        });
+
+        // Custom Navigation Events
+        $(".next-arrow").click(function() {
+            theme_slider.trigger('next.owl');
+        })
+        $(".prev-arrow").click(function() {
+            theme_slider.trigger('prev.owl');
+        })
+    });
+</script>
+@endpush @endsection
